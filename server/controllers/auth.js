@@ -19,7 +19,7 @@ export const register = async (req, res) => {
         } = req.body
 
         const salt = await bcrypt.genSalt()
-        const passwordHash = await bcrypt.bash(password, salt)
+        const passwordHash = await bcrypt.hash(password, salt)
 
         const newUser = new User({
             firstName,
@@ -31,7 +31,7 @@ export const register = async (req, res) => {
             location,
             occupation,
             viewedProfile: Math.floor(Math.random() * 10000),
-            impresssions: Math.floor(Math.random() * 10000),
+            impressions: Math.floor(Math.random() * 10000),
         })
 
         const savedUser = await newUser.save() 
