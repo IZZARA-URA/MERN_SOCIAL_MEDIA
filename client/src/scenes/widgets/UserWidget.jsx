@@ -14,28 +14,24 @@ import {
   import { useEffect, useState } from "react";
   import { useNavigate } from "react-router-dom";
 
-const UserWidget = ({userId, picturePath}) => {
+const UserWidget = ({ userId, picturePath }) => {
     const [user, setUser] = useState(null)
     const token = useSelector((state) => state.token)
     const navigate = useNavigate()
 
-
-
-
-    // THEM 
+    // THEME
     const { palette } = useTheme();
     const dark = palette.neutral.dark
     const medium = palette.neutral.medium
     const main = palette.neutral.main
 
-
-
-
     const getUser = async () => {
-      const response = await fetch(`http://localhost:3001/users/${userId}`, {
-        method: "GET",
-        headers: { Authorization:`Bearer ${token}` },
-      })
+      const response = await fetch(
+        `http://localhost:3001/users/${userId}`,
+        {
+          method: "GET",
+          headers: { Authorization: `Bearer ${token}` },
+        })
       const data = await response.json()
       setUser(data)
       console.log(data)
@@ -68,13 +64,13 @@ const UserWidget = ({userId, picturePath}) => {
             onClick={() => navigate(`/profile/${userId}`)}
         >
             <FlexBetween gap="1rem">
-                <UserImage image={picturePath}/>
-                <Box>
-                  <Typography>
-                    {firstName} {lastName}
-                  </Typography>
-                  <Typography color={medium}>{friends.length} Friends</Typography>
-                </Box>
+              <UserImage image={picturePath} />
+              <Box>
+                <Typography>
+                  {firstName} {lastName}
+                </Typography>
+                <Typography color={medium}>{friends.length} Friends </Typography>
+              </Box>
             </FlexBetween>
             <ManageAccountsOutlined />
         </FlexBetween>

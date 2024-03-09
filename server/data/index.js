@@ -9,6 +9,7 @@ const userIds = [
   new mongoose.Types.ObjectId(),
   new mongoose.Types.ObjectId(),
   new mongoose.Types.ObjectId(),
+  new mongoose.Types.ObjectId(),
 ];
 
 export const users = [
@@ -19,7 +20,9 @@ export const users = [
     email: "aaaaaaa@gmail.com",
     password: "$2b$10$dsasdgsagasda//G9JxQ4bQ8KXf4OAIe/X/AK9skyWUy",
     picturePath: "p11.jpeg",
-    friends: [],
+    friends: [
+      userIds[8]
+    ],
     location: "San Fran, CA",
     occupation: "Software Engineer",
     viewedProfile: 14561,
@@ -35,7 +38,9 @@ export const users = [
     email: "thataaa@gmail.com",
     password: "$!FEAS@!O)_IDJda//G9JxQ4bQ8KXf4OAIe/X/AK9skyWUy",
     picturePath: "p3.jpeg",
-    friends: [],
+    friends: [
+      userIds[8]
+    ],
     location: "New York, CA",
     occupation: "Degenerate",
     viewedProfile: 12351,
@@ -132,6 +137,25 @@ export const users = [
     password: "$2b$10$dsasdgsagasda//G9JxQ4bQ8KXf4OAIe/X/AK9skyWUy",
     picturePath: "p9.jpeg",
     friends: [],
+    location: "Washington, DC",
+    occupation: "A Student",
+    viewedProfile: 19420,
+    impressions: 82970,
+    createdAt: 1369908044,
+    updatedAt: 1359322268,
+    __v: 0,
+  },
+  {
+    _id: userIds[8],
+    firstName: "Pongchanok",
+    lastName: "Nuamteam",
+    email: "pongchanok@gmail.com",
+    password: "pongchanok",
+    picturePath: "me.jpeg",
+    friends: [
+      userIds[0],
+      userIds[1],
+    ],
     location: "Washington, DC",
     occupation: "A Student",
     viewedProfile: 19420,

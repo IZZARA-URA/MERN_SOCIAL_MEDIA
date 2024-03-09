@@ -46,7 +46,7 @@ const Navbar = () => {
   const [isMobileMenuToggled ,setIsMobileMenuToggled] = useState(false)
 
 
-  const fullname = `${user.firstName} ${user.lastName}`
+  const fullname = `${user?.firstName} ${user?.lastName}`
 
 
   return (
