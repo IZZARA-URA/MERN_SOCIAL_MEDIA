@@ -5,14 +5,16 @@ import {
     EditOutlined,
     LocationOnOutlined,
     WorkOutlineOutlined,
-  } from "@mui/icons-material";
-  import { Box, Typography, Divider, useTheme } from "@mui/material";
-  import UserImage from "components/UserImage";
-  import FlexBetween from "components/FlexBetween";
-  import WidgetWrapper from "components/WidgetWrapper";
-  import { useSelector } from "react-redux";
-  import { useEffect, useState } from "react";
-  import { useNavigate } from "react-router-dom";
+} from "@mui/icons-material";
+import { Box, Typography, Divider, useTheme } from "@mui/material";
+import UserImage from "components/UserImage";
+import FlexBetween from "components/FlexBetween";
+import WidgetWrapper from "components/WidgetWrapper";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { prefix } from "../../prefix/index.js";
 
 const UserWidget = ({ userId, picturePath }) => {
     const [user, setUser] = useState(null)
@@ -27,7 +29,7 @@ const UserWidget = ({ userId, picturePath }) => {
 
     const getUser = async () => {
       const response = await fetch(
-        `http://localhost:3001/users/${userId}`,
+        `${prefix}/users/${userId}`,
         {
           method: "GET",
           headers: { Authorization: `Bearer ${token}` },

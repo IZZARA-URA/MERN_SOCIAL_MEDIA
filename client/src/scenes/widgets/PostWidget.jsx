@@ -12,6 +12,8 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPost } from "state";
 
+import { prefix } from "../../prefix/index.js";
+
 const PostWidget = ({
   postId,
   postUserId,
@@ -30,13 +32,22 @@ const PostWidget = ({
   // const isLiked = Boolean(likes[loggedInUserId]);
   // const likeCount = Object.keys(likes).length;
 
+  // const isLiked = likes[loggedInUserId] === undefined ? true : false
+
+  const isLiked = (likes, loggedInUserId) => Object.keys(likes).includes(loggedInUserId);
+
+  const likeCount = Math.floor(Math.random() * 10)
+
   const { palette } = useTheme();
   const main = palette.neutral.main;
   const primary = palette.primary.main;
 
+  console.log("loggedInUserId", loggedInUserId)
+  console.log("likes", likes)
+
   const patchLike = async () => {
     const response = await fetch(
-      `http://localhost:3001/posts/${postId}/like`, 
+      `${prefix}/posts/${postId}/like`, 
       {
         method: "PATCH",
         headers: {
@@ -66,27 +77,33 @@ const PostWidget = ({
           height="auto"
           alt="post"
           style={{ borderRadius: "0.75rem", marginTop: "0.75rem" }}
-          src={`http://localhost:3001/assets/${picturePath}`}
+          src={`${prefix}/assets/${picturePath}`}
         />
       )}
       <FlexBetween mt="0.25rem">
         <FlexBetween gap="1rem">
           <FlexBetween gap="0.3rem">
             <IconButton onClick={patchLike}>
-              {/* {isLiked ? (
+              {isLiked ? (
                 <FavoriteOutlined sx={{ color: primary }} />
               ) : (
                 <FavoriteBorderOutlined />
-              )} */}
+              )}
             </IconButton>
-            {/* <Typography>{likeCount}</Typography> */}
+
+            <Typography>
+              {likeCount}
+            </Typography>
+
           </FlexBetween>
 
           <FlexBetween gap="0.3rem">
             <IconButton onClick={() => setIsComments(!isComments)}>
               <ChatBubbleOutlineOutlined />
             </IconButton>
-            {/* <Typography>{comments.length}</Typography> */}
+            <Typography>
+              {comments.length}
+            </Typography>
           </FlexBetween>
         </FlexBetween>
 

@@ -6,6 +6,8 @@ import { setFriends } from "state";
 import FlexBetween from "./FlexBetween";
 import UserImage from "./UserImage";
 
+import { prefix } from "../prefix/index.js";
+
 const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -18,16 +20,12 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
   const primaryDark = palette.primary.dark;
   const main = palette.neutral.main;
   const medium = palette.neutral.medium;
-
-  // console.log(friendId)
-  // console.log(friends)
-
   const isFriend = friends.find((friend) => friend._id === friendId);
   const isSelf = friendId === _id
 
   const patchFriend = async () => {
     const response = await fetch(
-      `http://localhost:3001/users/${_id}/${friendId}`,
+      `${prefix}/users/${_id}/${friendId}`,
       {
         method: "PATCH",
         headers: {

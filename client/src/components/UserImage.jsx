@@ -1,5 +1,7 @@
 import { Box } from "@mui/material"
 
+import { prefix } from "prefix";
+
 const UserImage = ({ image, size = "60px"}) => {
     // console.log(image)
     return (
@@ -9,7 +11,7 @@ const UserImage = ({ image, size = "60px"}) => {
                 width={size}
                 height={size}
                 alt="user"
-                src={`http://localhost:3001/assets/${image}`}
+                src={`${prefix}/assets/${image}`}
             />
          </Box>
     )
