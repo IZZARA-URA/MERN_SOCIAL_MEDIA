@@ -10,14 +10,12 @@ import { CssBaseline, ThemeProvider } from "@mui/material"
 import HomePage from "./scenes/homePage";
 import LoginPage from "./scenes/loginPage";
 import ProfilePage from "./scenes/profilePage";
-import Navbar from "./scenes/navbar";
-
 
 
 function App() {
   const mode = useSelector((state) => state.mode) // from state the we setting up
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode])
-  const isAuth = true
+  const isAuth = Boolean(useSelector((state) => state.token));
 
 
   return (
