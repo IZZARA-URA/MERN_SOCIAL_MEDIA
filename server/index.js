@@ -68,7 +68,7 @@ app.use("/posts", postRoutes)
 const PORT = process.env.PORT
 mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    // useUnifiedTopology: true
 }).then(() => {
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`))
 
